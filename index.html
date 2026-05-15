@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHOS — Turn Information Into Identity</title>
+    <meta name="description" content="ETHOS is an AI-powered identity operating system that transforms information consumption into authentic thought leadership and personal brand positioning.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav" class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <div class="logo-mark">E</div>
+                <span class="logo-text">ETHOS</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#problem">Problem</a>
+                <a href="#how-it-works">How it works</a>
+                <a href="#features">Features</a>
+                <a href="#scoring">Scoring</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#waitlist" class="btn btn-ghost">Log in</a>
+                <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#problem" class="mobile-link">Problem</a>
+        <a href="#how-it-works" class="mobile-link">How it works</a>
+        <a href="#features" class="mobile-link">Features</a>
+        <a href="#scoring" class="mobile-link">Scoring</a>
+        <a href="#pricing" class="mobile-link">Pricing</a>
+        <a href="#waitlist" class="btn btn-primary" style="width:100%;text-align:center;margin-top:1rem;">Join Waitlist</a>
+    </div>
+
+    <!-- Hero -->
+    <section id="hero" class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-grid-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-badge fade-up">
+                <span class="badge-dot"></span>
+                AI-Powered Identity Operating System
+            </div>
+            <h1 class="hero-title fade-up delay-1">
+                Turn information<br>into <span class="gradient-text">identity.</span>
+            </h1>
+            <p class="hero-subtitle fade-up delay-2">
+                Connect what you consume. Extract what matters.<br>
+                Generate what you believe. Build who you become.
+            </p>
+            <div class="hero-cta fade-up delay-3">
+                <a href="#waitlist" class="btn btn-primary btn-lg">
+                    Start building your identity
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#how-it-works" class="btn btn-ghost btn-lg">See how it works</a>
+            </div>
+            <div class="hero-stats fade-up delay-4">
+                <div class="stat">
+                    <span class="stat-value">9</span>
+                    <span class="stat-label">Quality Dimensions</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">10+</span>
+                    <span class="stat-label">AI Agents</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value">&lt;15m</span>
+                    <span class="stat-label">To First Content</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating UI Preview -->
+        <div class="hero-preview fade-up delay-5">
+            <div class="preview-window">
+                <div class="preview-topbar">
+                    <div class="preview-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="preview-title">ETHOS — Content Studio</span>
+                </div>
+                <div class="preview-body">
+                    <div class="preview-sidebar">
+                        <div class="sidebar-item active"><span class="si-icon">◈</span> Dashboard</div>
+                        <div class="sidebar-item"><span class="si-icon">↗</span> Insights</div>
+                        <div class="sidebar-item"><span class="si-icon">✦</span> Generate</div>
+                        <div class="sidebar-item"><span class="si-icon">◎</span> Vault</div>
+                        <div class="sidebar-item"><span class="si-icon">⊕</span> Queue</div>
+                    </div>
+                    <div class="preview-main">
+                        <div class="preview-card">
+                            <div class="card-header">
+                                <span class="card-tag">LinkedIn Post</span>
+                                <span class="card-score">Score: <strong>87</strong></span>
+                            </div>
+                            <div class="card-text">
+                                <div class="text-line w100"></div>
+                                <div class="text-line w90"></div>
+                                <div class="text-line w75"></div>
+                                <div class="text-line w60"></div>
+                            </div>
+                            <div class="card-scores-mini">
+                                <div class="mini-score"><span>Authenticity</span><div class="mini-bar"><div class="mini-fill" style="width:92%"></div></div></div>
+                                <div class="mini-score"><span>Originality</span><div class="mini-bar"><div class="mini-fill" style="width:85%"></div></div></div>
+                                <div class="mini-score"><span>Voice Match</span><div class="mini-bar"><div class="mini-fill" style="width:88%"></div></div></div>
+                            </div>
+                        </div>
+                        <div class="preview-card small">
+                            <div class="card-header">
+                                <span class="card-tag purple">X Thread</span>
+                                <span class="card-score">Score: <strong>91</strong></span>
+                            </div>
+                            <div class="card-text">
+                                <div class="text-line w80"></div>
+                                <div class="text-line w65"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section id="problem" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag fade-up">The Problem</span>
+                <h2 class="section-title fade-up delay-1">You consume everything.<br><span class="gradient-text">You publish nothing.</span></h2>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card fade-up delay-1">
+                    <div class="problem-icon">📬</div>
+                    <div class="problem-number">200+</div>
+                    <div class="problem-label">newsletters saved</div>
+                </div>
+                <div class="problem-card fade-up delay-2">
+                    <div class="problem-icon">🔖</div>
+                    <div class="problem-number">500+</div>
+                    <div class="problem-label">bookmarks untouched</div>
+                </div>
+                <div class="problem-card fade-up delay-3">
+                    <div class="problem-icon">💭</div>
+                    <div class="problem-number">∞</div>
+                    <div class="problem-label">"I should write about this" moments</div>
+                </div>
+                <div class="problem-card fade-up delay-4">
+                    <div class="problem-icon">📝</div>
+                    <div class="problem-number">0</div>
+                    <div class="problem-label">published posts this month</div>
+                </div>
+            </div>
+            <p class="problem-statement fade-up delay-5">
+                The gap between what you <em>know</em> and what the world <em>knows about you</em><br>is your biggest career liability.
+            </p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag fade-up">How It Works</span>
+                <h2 class="section-title fade-up delay-1">From consumption<br>to <span class="gradient-text">conviction.</span></h2>
+                <p class="section-desc fade-up delay-2">Five steps from raw information to authentic identity.</p>
+            </div>
+            <div class="steps-timeline">
+                <div class="step fade-up delay-1">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Connect</h3>
+                        <p>Feed in your newsletters, articles, PDFs, screenshots, tweets, podcasts, and bookmarks.</p>
+                        <div class="step-tags">
+                            <span>Gmail</span><span>RSS</span><span>PDF</span><span>URLs</span><span>Screenshots</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="step fade-up delay-2">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Extract</h3>
+                        <p>AI agents pull the signal — ideas, frameworks, data points, contrarian angles, and emerging trends.</p>
+                        <div class="step-tags">
+                            <span>Ideas</span><span>Frameworks</span><span>Data</span><span>Trends</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="step fade-up delay-3">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Inject</h3>
+                        <p>Layer your perspective, personal experiences, and unique voice onto every insight.</p>
+                        <div class="step-tags">
+                            <span>Voice</span><span>Experience</span><span>Beliefs</span><span>Perspective</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="step fade-up delay-4">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Generate</h3>
+                        <p>Authentic content scored on 9 quality dimensions. Only pieces scoring 80+ reach your queue.</p>
+                        <div class="step-tags">
+                            <span>LinkedIn</span><span>X Threads</span><span>Newsletters</span><span>Blogs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="step fade-up delay-5">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3>Publish</h3>
+                        <p>Review, refine, approve — and own your narrative. Every piece sounds like you on your best day.</p>
+                        <div class="step-tags">
+                            <span>Review</span><span>Edit</span><span>Approve</span><span>Publish</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag fade-up">Core Features</span>
+                <h2 class="section-title fade-up delay-1">An identity engine,<br>not a <span class="text-muted">content generator.</span></h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card featured fade-up">
+                    <div class="feature-icon-lg">◈</div>
+                    <h3>Identity Engine</h3>
+                    <p>A persistent, evolving model of who you are as a thinker. Learns your voice, beliefs, experiences, and positioning — and improves with every interaction.</p>
+                    <div class="feature-detail">
+                        <span>Voice Profile</span>
+                        <span>Experience Library</span>
+                        <span>Belief System</span>
+                        <span>Topic Map</span>
+                    </div>
+                </div>
+                <div class="feature-card fade-up delay-1">
+                    <div class="feature-icon">⊙</div>
+                    <h3>Smart Ingestion</h3>
+                    <p>Connect Gmail, RSS, URLs, PDFs, screenshots, and voice notes. ETHOS extracts signal from noise automatically.</p>
+                </div>
+                <div class="feature-card fade-up delay-2">
+                    <div class="feature-icon">✦</div>
+                    <h3>Insight Extraction</h3>
+                    <p>10 specialized AI agents extract ideas, frameworks, trends, and contrarian angles from everything you consume.</p>
+                </div>
+                <div class="feature-card fade-up delay-3">
+                    <div class="feature-icon">◎</div>
+                    <h3>Perspective Layer</h3>
+                    <p>Your experiences and viewpoints injected into every piece. This isn't AI writing — it's AI-amplified thinking.</p>
+                </div>
+                <div class="feature-card fade-up delay-4">
+                    <div class="feature-icon">⬡</div>
+                    <h3>Multi-Format Output</h3>
+                    <p>LinkedIn posts, X threads, newsletters, blogs, Instagram carousels — each adapted to platform-native patterns.</p>
+                </div>
+                <div class="feature-card fade-up delay-5">
+                    <div class="feature-icon">↻</div>
+                    <h3>Repurposing Engine</h3>
+                    <p>One insight becomes five content pieces. Maximize reach without multiplying effort.</p>
+                </div>
+                <div class="feature-card fade-up delay-6">
+                    <div class="feature-icon">📊</div>
+                    <h3>Content Vault</h3>
+                    <p>Every insight, draft, and published piece — searchable, categorized, and connected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scoring -->
+    <section id="scoring" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag fade-up">Quality Scoring</span>
+                <h2 class="section-title fade-up delay-1">Nine dimensions.<br><span class="gradient-text">Zero AI slop.</span></h2>
+                <p class="section-desc fade-up delay-2">Every piece goes through a rigorous scoring pipeline. Only content scoring 80+ reaches your queue.</p>
+            </div>
+            <div class="scoring-grid">
+                <div class="score-card fade-up delay-1">
+                    <div class="score-ring" data-score="92">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:92"/></svg>
+                        <span class="ring-value">92</span>
+                    </div>
+                    <h4>Authenticity</h4>
+                    <p>Sounds genuinely like you</p>
+                </div>
+                <div class="score-card fade-up delay-1">
+                    <div class="score-ring" data-score="85">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:85"/></svg>
+                        <span class="ring-value">85</span>
+                    </div>
+                    <h4>Originality</h4>
+                    <p>Novel perspective, not rehashed</p>
+                </div>
+                <div class="score-card fade-up delay-2">
+                    <div class="score-ring" data-score="88">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:88"/></svg>
+                        <span class="ring-value">88</span>
+                    </div>
+                    <h4>Readability</h4>
+                    <p>Clear, engaging, well-structured</p>
+                </div>
+                <div class="score-card fade-up delay-2">
+                    <div class="score-ring" data-score="90">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:90"/></svg>
+                        <span class="ring-value">90</span>
+                    </div>
+                    <h4>Identity Alignment</h4>
+                    <p>Matches your brand positioning</p>
+                </div>
+                <div class="score-card fade-up delay-3">
+                    <div class="score-ring" data-score="78">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:78"/></svg>
+                        <span class="ring-value">78</span>
+                    </div>
+                    <h4>Emotional Depth</h4>
+                    <p>Resonant, not robotic</p>
+                </div>
+                <div class="score-card fade-up delay-3">
+                    <div class="score-ring" data-score="83">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:83"/></svg>
+                        <span class="ring-value">83</span>
+                    </div>
+                    <h4>Engagement</h4>
+                    <p>Will people stop scrolling?</p>
+                </div>
+                <div class="score-card fade-up delay-4">
+                    <div class="score-ring" data-score="94">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:94"/></svg>
+                        <span class="ring-value">94</span>
+                    </div>
+                    <h4>AI Resistance</h4>
+                    <p>Undetectable as AI-written</p>
+                </div>
+                <div class="score-card fade-up delay-4">
+                    <div class="score-ring" data-score="86">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:86"/></svg>
+                        <span class="ring-value">86</span>
+                    </div>
+                    <h4>Storytelling</h4>
+                    <p>Narrative arc, concrete details</p>
+                </div>
+                <div class="score-card fade-up delay-5">
+                    <div class="score-ring" data-score="81">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" class="ring-bg"/><circle cx="40" cy="40" r="35" class="ring-fill" style="--score:81"/></svg>
+                        <span class="ring-value">81</span>
+                    </div>
+                    <h4>Insight Depth</h4>
+                    <p>Substantive, actionable thinking</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Who -->
+    <section id="for-who" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag fade-up">Built For</span>
+                <h2 class="section-title fade-up delay-1">For people who <em>think deeply</em><br>but <span class="text-muted">publish rarely.</span></h2>
+            </div>
+            <div class="persona-grid">
+                <div class="persona-card fade-up delay-1">
+                    <span class="persona-emoji">🚀</span>
+                    <h4>Startup Founders</h4>
+                    <p>Build founder authority without spending 2 hours a day writing.</p>
+                </div>
+                <div class="persona-card fade-up delay-2">
+                    <span class="persona-emoji">📦</span>
+                    <h4>Product Managers</h4>
+                    <p>Turn product thinking into thought leadership content.</p>
+                </div>
+                <div class="persona-card fade-up delay-3">
+                    <span class="persona-emoji">🤖</span>
+                    <h4>AI Creators</h4>
+                    <p>Position yourself in the fastest-moving space on earth.</p>
+                </div>
+                <div class="persona-card fade-up delay-4">
+                    <span class="persona-emoji">🎓</span>
+                    <h4>Students</h4>
+                    <p>Build a public identity before you even graduate.</p>
+                </div>
+                <div class="persona-card fade-up delay-5">
+                    <span class="persona-emoji">🛠</span>
+                    <h4>Indie Hackers</h4>
+                    <p>Ship products and build an audience simultaneously.</p>
+                </div>
+                <div class="persona-card fade-up delay-6">
+                    <span class="persona-emoji">📈</span>
+                    <h4>Consultants</h4>
+                    <p>Generate inbound leads through authentic authority.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag fade-up">Pricing</span>
+                <h2 class="section-title fade-up delay-1">Invest in your <span class="gradient-text">identity.</span></h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-up delay-1">
+                    <div class="pricing-name">Starter</div>
+                    <div class="pricing-price">$0<span>/mo</span></div>
+                    <div class="pricing-desc">For curious minds</div>
+                    <ul class="pricing-features">
+                        <li>5 content pieces/month</li>
+                        <li>Basic scoring</li>
+                        <li>1 output format</li>
+                        <li>Manual input only</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-ghost" style="width:100%">Get Started</a>
+                </div>
+                <div class="pricing-card popular fade-up delay-2">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-name">Builder</div>
+                    <div class="pricing-price">$29<span>/mo</span></div>
+                    <div class="pricing-desc">For active creators</div>
+                    <ul class="pricing-features">
+                        <li>30 content pieces/month</li>
+                        <li>Full 9-dimension scoring</li>
+                        <li>All output formats</li>
+                        <li>Content Vault</li>
+                        <li>Identity Engine</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-primary" style="width:100%">Join Waitlist</a>
+                </div>
+                <div class="pricing-card fade-up delay-3">
+                    <div class="pricing-name">Pro</div>
+                    <div class="pricing-price">$79<span>/mo</span></div>
+                    <div class="pricing-desc">For serious builders</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited content</li>
+                        <li>Gmail integration</li>
+                        <li>Trend detection</li>
+                        <li>Repurposing engine</li>
+                        <li>Priority AI models</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-ghost" style="width:100%">Join Waitlist</a>
+                </div>
+                <div class="pricing-card fade-up delay-4">
+                    <div class="pricing-name">Operator</div>
+                    <div class="pricing-price">$199<span>/mo</span></div>
+                    <div class="pricing-desc">For teams & agencies</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Pro</li>
+                        <li>Team seats</li>
+                        <li>API access</li>
+                        <li>Custom voice models</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-ghost" style="width:100%">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Waitlist -->
+    <section id="waitlist" class="section cta-section">
+        <div class="cta-glow"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title fade-up">Your identity is compounding.<br><span class="gradient-text">Or it isn't.</span></h2>
+                <p class="cta-desc fade-up delay-1">Every week you don't publish, someone less qualified takes the position that should be yours.</p>
+                <form class="waitlist-form fade-up delay-2" id="waitlistForm">
+                    <input type="email" placeholder="your@email.com" required id="waitlistEmail" class="waitlist-input">
+                    <button type="submit" class="btn btn-primary btn-lg">Join the Waitlist</button>
+                </form>
+                <p class="waitlist-note fade-up delay-3">Free to join. No spam. Early access for founders.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <div class="nav-logo">
+                    <div class="logo-mark">E</div>
+                    <span class="logo-text">ETHOS</span>
+                </div>
+                <p class="footer-tagline">Turn information into identity.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h5>Product</h5>
+                    <a href="#features">Features</a>
+                    <a href="#scoring">Scoring</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#">Changelog</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 ETHOS. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#" aria-label="Twitter/X">𝕏</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="GitHub">⌘</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
