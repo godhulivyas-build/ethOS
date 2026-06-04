@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ethOS Internship Aggregator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="glow-orb" id="orb-1"></div>
+    <div class="glow-orb" id="orb-2"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>ethOS <span>Internships</span></h1>
+                    <p>Daily Smart Aggregator</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="refresh-indicator">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span>15 Daily Listings Updated</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search & Filter Controls -->
+        <section class="controls-section">
+            <div class="search-bar-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" placeholder="Search by skills, roles, or company...">
+            </div>
+            
+            <div class="filters-wrapper">
+                <div class="filter-group">
+                    <label for="work-mode-filter"><i class="fa-solid fa-briefcase"></i> Work Mode</label>
+                    <select id="work-mode-filter">
+                        <option value="all">All Modes</option>
+                        <option value="remote">Remote (WFH)</option>
+                        <option value="hybrid">Hybrid</option>
+                        <option value="in-office">In-Office</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="stipend-filter"><i class="fa-solid fa-wallet"></i> Stipend</label>
+                    <select id="stipend-filter">
+                        <option value="all">All Stipends</option>
+                        <option value="paid">Paid Only</option>
+                        <option value="unpaid">Unpaid Only</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sort-by"><i class="fa-solid fa-arrow-down-wide-short"></i> Sort By</label>
+                    <select id="sort-by">
+                        <option value="latest">Latest Scraped</option>
+                        <option value="highest_stipend">Highest Stipend</option>
+                        <option value="deadline_soon">Deadline Approaching</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number" id="total-count">0</span>
+                <span class="stat-label">Available Internships</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="remote-count">0</span>
+                <span class="stat-label">Remote Options</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="paid-count">0</span>
+                <span class="stat-label">Paid Listings</span>
+            </div>
+        </section>
+
+        <!-- Listings Grid -->
+        <main>
+            <div id="loader" class="loader-container">
+                <div class="spinner"></div>
+                <p>Curating your top internships...</p>
+            </div>
+            
+            <div id="no-results" class="no-results-card hidden">
+                <i class="fa-solid fa-folder-open"></i>
+                <h3>No internships found</h3>
+                <p>Try adjusting your search terms or filters.</p>
+            </div>
+
+            <div class="listings-grid" id="listings-grid">
+                <!-- Cards injected here dynamically -->
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 ethOS Internship Aggregator. Powered by Python, Flask & BeautifulSoup.</p>
+        </footer>
+    </div>
+
+    <!-- Script -->
+    <script src="app.js"></script>
+</body>
+</html>

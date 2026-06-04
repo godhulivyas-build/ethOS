@@ -1,0 +1,47 @@
+name: Daily Internship Scraper
+
+on:
+  schedule:
+    # Run daily at 8:00 AM UTC (1:30 PM IST)
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    # Allow manual triggering from the GitHub Actions tab
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: Run Aggregator
+      run: |
+        python internship-tracker/scraper/scraper.py
+
+    - name: Commit and Push Database Changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Check if database has changed
+        git add internship-tracker/database.sqlite
+        
+        if git diff --staged --quiet; then
+          echo "No new listings found today. Database is unchanged."
+        else
+          git commit -m "chore: auto-update daily internships database [skip ci]"
+          git push
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
