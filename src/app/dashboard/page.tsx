@@ -350,13 +350,15 @@ export default function DashboardPage() {
               Analytics & Funnel
             </button>
 
-            <button 
-              onClick={() => setShowResumeDrawer(true)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-zinc-400 hover:text-white hover:bg-zinc-900/40 text-left w-full mt-2 border border-dashed border-zinc-850 bg-zinc-900/20 cursor-pointer"
+            <a 
+              href="https://wa.me/918889701865?text=Hello!%20I%20would%20like%20to%20get%20a%20resume%20template%20and%20help%20with%20my%20job%20search."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all text-green-400 hover:text-green-300 hover:bg-green-950/20 text-left w-full mt-2 border border-dashed border-green-800 bg-green-950/10 cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[18px] text-zinc-400">description</span>
-              Overleaf Resume
-            </button>
+              <span className="material-symbols-outlined text-[18px] text-green-400">chat</span>
+              WhatsApp Help (Resume & Jobs)
+            </a>
           </nav>
         </div>
         

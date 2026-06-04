@@ -39,10 +39,31 @@ def init_db():
         )
     ''')
     
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS feedback (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            email TEXT NOT NULL,
+            rating INTEGER CHECK(rating >= 1 AND rating <= 5),
+            comment TEXT,
+            created_at TEXT NOT NULL
+        )
+    ''')
+    
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS clicks (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            event_type TEXT NOT NULL,
+            details TEXT,
+            clicked_at TEXT NOT NULL
+        )
+    ''')
+    
     # Create indices to speed up common queries (filtering & sorting)
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_job_id ON internships(job_id)')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_work_mode ON internships(work_mode)')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_stipend_type ON internships(stipend_type)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_clicks_event ON clicks(event_type)')
     
     conn.commit()
     conn.close()
@@ -146,6 +167,82 @@ def get_all_internships(filters=None, sort_by=None):
         
     conn.close()
     return internships
+
+def insert_feedback(feedback_data):
+    """
+    Inserts a user feedback dictionary into the database.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute('''
+            INSERT INTO feedback (name, email, rating, comment, created_at)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (
+            feedback_data.get('name'),
+            feedback_data.get('email'),
+            feedback_data.get('rating'),
+            feedback_data.get('comment'),
+            datetime.now().isoformat()
+        ))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"Error inserting feedback: {e}")
+        conn.close()
+        return False
+
+def insert_click(event_type, details=None):
+    """
+    Inserts a click tracking record into the database.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute('''
+            INSERT INTO clicks (event_type, details, clicked_at)
+            VALUES (?, ?, ?)
+        ''', (
+            event_type,
+            details,
+            datetime.now().isoformat()
+        ))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"Error inserting click: {e}")
+        conn.close()
+        return False
+
+def get_analytics_summary():
+    """
+    Returns counts of feedbacks and clicks.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute('SELECT COUNT(*) FROM clicks')
+        clicks_count = cursor.fetchone()[0]
+        
+        cursor.execute('SELECT COUNT(*) FROM feedback')
+        feedback_count = cursor.fetchone()[0]
+        
+        # Get count of clicks by type for detail
+        cursor.execute('SELECT event_type, COUNT(*) as cnt FROM clicks GROUP BY event_type')
+        breakdown = {row['event_type']: row['cnt'] for row in cursor.fetchall()}
+        
+        conn.close()
+        return {
+            "total_clicks": clicks_count,
+            "total_feedback": feedback_count,
+            "breakdown": breakdown
+        }
+    except Exception as e:
+        print(f"Error getting analytics summary: {e}")
+        conn.close()
+        return {"total_clicks": 0, "total_feedback": 0, "breakdown": {}}
 
 if __name__ == '__main__':
     # When run directly, initialize database for testing

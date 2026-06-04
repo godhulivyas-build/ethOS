@@ -152,6 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             
+            // Bind Apply Click Event
+            const applyBtn = card.querySelector('.apply-btn');
+            if (applyBtn) {
+                applyBtn.addEventListener('click', () => {
+                    trackClick('apply', `Clicked Apply for ${job.company} - ${job.role} (ID: ${job.job_id})`);
+                });
+            }
+
             // Bind Apollo Recruiters Toggle Event
             const toggleBtn = card.querySelector('.recruiter-toggle-btn');
             const panel = card.querySelector('.recruiter-panel');
@@ -168,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (isHidden) {
                     panel.classList.remove('hidden');
+                    trackClick('recruiter_lookup', `Opened HR contacts lookup for ${job.company}`);
                     
                     if (toggleBtn.classList.contains('unfetched')) {
                         toggleBtn.classList.remove('unfetched');
@@ -228,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 btn.addEventListener('click', (e) => {
                                     e.stopPropagation();
                                     const email = btn.getAttribute('data-email');
+                                    trackClick('copy_email', `Copied recruiter email ${email} for company ${job.company}`);
                                     navigator.clipboard.writeText(email).then(() => {
                                         const originalHtml = btn.innerHTML;
                                         btn.innerHTML = `<i class="fa-solid fa-check" style="color: #34d399;"></i> Copied`;
@@ -307,6 +317,139 @@ document.addEventListener('DOMContentLoaded', () => {
             .replace(/'/g, "&#039;");
     }
 
-    // Initial Fetch
+    // Track click telemetry
+    async function trackClick(eventType, details = '') {
+        try {
+            await fetch('/api/track-click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ event_type: eventType, details: details })
+            });
+            // Update clicks count element on UI
+            const clicksCountEl = document.getElementById('clicks-count');
+            if (clicksCountEl) {
+                const currentVal = parseInt(clicksCountEl.textContent) || 0;
+                clicksCountEl.textContent = currentVal + 1;
+            }
+        } catch (error) {
+            console.error('Error tracking click:', error);
+        }
+    }
+
+    // Fetch and initialize analytics
+    async function initAnalytics() {
+        try {
+            const response = await fetch('/api/analytics');
+            if (response.ok) {
+                const data = await response.json();
+                const clicksCountEl = document.getElementById('clicks-count');
+                if (clicksCountEl) {
+                    clicksCountEl.textContent = data.total_clicks || 0;
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching analytics:', error);
+        }
+    }
+
+    // Feedback Modal Setup
+    const feedbackTriggerBtn = document.getElementById('feedback-trigger-btn');
+    const feedbackModal = document.getElementById('feedback-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const feedbackForm = document.getElementById('feedback-form');
+
+    if (feedbackTriggerBtn && feedbackModal && closeModalBtn) {
+        // Open Modal
+        feedbackTriggerBtn.addEventListener('click', () => {
+            feedbackModal.classList.remove('hidden');
+            trackClick('feedback_modal_open', 'Opened Feedback Modal');
+        });
+
+        // Close Modal
+        closeModalBtn.addEventListener('click', () => {
+            feedbackModal.classList.add('hidden');
+        });
+
+        // Close Modal on clicking outside content area
+        feedbackModal.addEventListener('click', (e) => {
+            if (e.target === feedbackModal) {
+                feedbackModal.classList.add('hidden');
+            }
+        });
+
+        // Submit Feedback
+        feedbackForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('feedback-submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            const name = document.getElementById('feedback-name').value.trim();
+            const email = document.getElementById('feedback-email').value.trim();
+            const comment = document.getElementById('feedback-comment').value.trim();
+            
+            // Get selected rating value
+            const ratingRadio = feedbackForm.querySelector('input[name="rating"]:checked');
+            const rating = ratingRadio ? parseInt(ratingRadio.value) : null;
+
+            if (!email || !rating) {
+                alert('Please provide your email and a star rating.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name || null,
+                        email: email,
+                        rating: rating,
+                        comment: comment
+                    })
+                });
+
+                if (!response.ok) throw new Error('Feedback submission failed');
+
+                alert('Thank you! Your feedback has been submitted successfully.');
+                feedbackForm.reset();
+                feedbackModal.classList.add('hidden');
+                
+                trackClick('feedback_submit_success', `Submitted rating: ${rating}`);
+            } catch (err) {
+                console.error('Error submitting feedback:', err);
+                alert('Failed to submit feedback. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        });
+    }
+
+    // Static WhatsApp Click tracking
+    const whatsappBanner = document.getElementById('whatsapp-banner-link');
+    if (whatsappBanner) {
+        whatsappBanner.addEventListener('click', () => {
+            trackClick('whatsapp_banner', 'Founder WhatsApp Banner Link Clicked');
+        });
+    }
+
+    const whatsappFab = document.getElementById('whatsapp-fab-link');
+    if (whatsappFab) {
+        whatsappFab.addEventListener('click', () => {
+            trackClick('whatsapp_fab', 'Founder WhatsApp FAB Clicked');
+        });
+    }
+
+    // Initial Fetch & Analytics
     fetchInternships();
+    initAnalytics();
 });

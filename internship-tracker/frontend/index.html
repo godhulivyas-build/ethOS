@@ -31,12 +31,30 @@
                 </div>
             </div>
             <div class="header-right">
+                <button id="feedback-trigger-btn" class="feedback-trigger-btn">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    <span>Share Feedback</span>
+                </button>
                 <div class="refresh-indicator">
                     <i class="fa-solid fa-rotate"></i>
                     <span>15 Daily Listings Updated</span>
                 </div>
             </div>
         </header>
+
+        <!-- WhatsApp Banner -->
+        <section class="whatsapp-banner">
+            <div class="banner-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div class="banner-text">
+                <h3>Get a Premium Resume Template & Job Search Help</h3>
+                <p>Chat directly with the founder on WhatsApp to request a high-converting resume template and get personalized guidance on landing your target roles.</p>
+            </div>
+            <a href="https://wa.me/918889701865?text=Hello!%20I%20would%20like%20to%20get%20a%20resume%20template%20and%20help%20with%20my%20job%20search." target="_blank" class="banner-btn" id="whatsapp-banner-link">
+                <i class="fa-brands fa-whatsapp"></i> Get Resume & Job Help
+            </a>
+        </section>
 
         <!-- Search & Filter Controls -->
         <section class="controls-section">
@@ -90,6 +108,10 @@
                 <span class="stat-number" id="paid-count">0</span>
                 <span class="stat-label">Paid Listings</span>
             </div>
+            <div class="stat-item bg-stat-highlight">
+                <span class="stat-number font-neon" id="clicks-count">0</span>
+                <span class="stat-label">Clicks Tracked</span>
+            </div>
         </section>
 
         <!-- Listings Grid -->
@@ -114,6 +136,46 @@
         <footer>
             <p>&copy; 2026 ethOS Internship Aggregator. Powered by Python, Flask & BeautifulSoup.</p>
         </footer>
+    </div>
+
+    <!-- Floating WhatsApp FAB -->
+    <a href="https://wa.me/918889701865?text=Hello!%20I%20would%20like%20to%20get%20a%20resume%20template%20and%20help%20with%20my%20job%20search." target="_blank" class="whatsapp-fab" id="whatsapp-fab-link" title="Get Resume & Job Help">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>Get Resume & Job Help</span>
+    </a>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal hidden">
+        <div class="modal-content glassmorphic animate-scale-in">
+            <button class="close-modal-btn" id="close-modal-btn">&times;</button>
+            <h2><i class="fa-regular fa-comment-dots"></i> Help Us Improve!</h2>
+            <p>Your feedback shapes the future of the aggregator. Rate us and leave a comment below.</p>
+            <form id="feedback-form" class="feedback-form">
+                <div class="form-group">
+                    <label for="feedback-name">Your Name (Optional)</label>
+                    <input type="text" id="feedback-name" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="feedback-email">Email Address</label>
+                    <input type="email" id="feedback-email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>How would you rate the platform?</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="5 stars"><i class="fa-solid fa-star"></i></label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars"><i class="fa-solid fa-star"></i></label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars"><i class="fa-solid fa-star"></i></label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars"><i class="fa-solid fa-star"></i></label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star"><i class="fa-solid fa-star"></i></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="feedback-comment">Comments / Suggestions</label>
+                    <textarea id="feedback-comment" rows="3" placeholder="Tell us how we can make this better..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="feedback-submit-btn">Submit Feedback</button>
+            </form>
+        </div>
     </div>
 
     <!-- Script -->

@@ -1,11 +1,14 @@
 import os
 import requests
 from flask import Flask, jsonify, request, send_from_directory
-from db import get_all_internships
+from db import get_all_internships, insert_feedback, insert_click, get_analytics_summary
 
 # Initialize Flask app
 # The static folder points to the frontend directory relative to backend
 app = Flask(__name__, static_folder='../frontend', static_url_path='')
+
+from db import init_db
+init_db()
 
 @app.route('/')
 def index():
@@ -101,6 +104,50 @@ def apollo_contacts():
         print(f"Error querying Apollo API: {e}")
         
     return jsonify(result)
+
+@app.route('/api/feedback', methods=['POST'])
+def submit_feedback():
+    """
+    Submits user suggestions and rating feedback to improve the platform.
+    """
+    data = request.get_json() or {}
+    email = data.get('email')
+    rating = data.get('rating')
+    
+    if not email or not rating:
+        return jsonify({"error": "Email and rating are required"}), 400
+        
+    success = insert_feedback(data)
+    if success:
+        return jsonify({"status": "success", "message": "Feedback submitted successfully!"})
+    else:
+        return jsonify({"error": "Failed to submit feedback"}), 500
+
+@app.route('/api/track-click', methods=['POST'])
+def track_click_event():
+    """
+    Records a click interaction event for tracking statistics (Apply, Find HR, WhatsApp).
+    """
+    data = request.get_json() or {}
+    event_type = data.get('event_type')
+    details = data.get('details')
+    
+    if not event_type:
+        return jsonify({"error": "Event type is required"}), 400
+        
+    success = insert_click(event_type, details)
+    if success:
+        return jsonify({"status": "success", "message": "Click tracked successfully"})
+    else:
+        return jsonify({"error": "Failed to log click"}), 500
+
+@app.route('/api/analytics', methods=['GET'])
+def get_analytics():
+    """
+    Exposes platform click metrics and feedback totals for live dashboard status counts.
+    """
+    summary = get_analytics_summary()
+    return jsonify(summary)
 
 if __name__ == '__main__':
     # Run the server on port 5000 in debug mode
