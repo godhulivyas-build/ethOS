@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 export default function DashboardPage() {
   const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -51,7 +53,7 @@ export default function DashboardPage() {
       if (freshnessFilter !== 'all') params.append('posted_within', freshnessFilter);
       if (activeWorkType === 'Onsite' && preferredCity) params.append('location', preferredCity);
       
-      const res = await fetch(`http://localhost:8000/api/v1/internships?${params.toString()}`);
+      const res = await fetch(`${API_BASE}/api/v1/internships?${params.toString()}`);
       if (!res.ok) throw new Error("API not responding, using pre-seeded fallback");
       const data = await res.json();
       setJobs(data);
@@ -107,7 +109,7 @@ export default function DashboardPage() {
   const fetchDigests = async () => {
     try {
       setDigestsLoading(true);
-      const res = await fetch("http://localhost:8000/api/v1/internships/digests");
+      const res = await fetch(`${API_BASE}/api/v1/internships/digests`);
       if (!res.ok) throw new Error("Offline");
       const data = await res.json();
       setDigests(data);
@@ -123,7 +125,7 @@ export default function DashboardPage() {
   const fetchStats = async () => {
     try {
       setStatsLoading(true);
-      const res = await fetch("http://localhost:8000/api/v1/internships/stats");
+      const res = await fetch(`${API_BASE}/api/v1/internships/stats`);
       if (!res.ok) throw new Error("Offline");
       const data = await res.json();
       setStats(data);
@@ -164,7 +166,7 @@ export default function DashboardPage() {
 
     setTimeout(async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/v1/internships/trigger-sync", { method: "POST" });
+        const res = await fetch(`${API_BASE}/api/v1/internships/trigger-sync`, { method: "POST" });
         if (res.ok) {
           await fetchJobs();
           await fetchDigests();
@@ -207,7 +209,7 @@ export default function DashboardPage() {
     }));
 
     try {
-      const res = await fetch(`http://localhost:8000/api/v1/internships/${jobId}/action`, {
+      const res = await fetch(`${API_BASE}/api/v1/internships/${jobId}/action`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -267,7 +269,7 @@ export default function DashboardPage() {
     }
 
     try {
-      await fetch(`http://localhost:8000/api/v1/internships/${feedbackJob.id}/feedback`, {
+      await fetch(`${API_BASE}/api/v1/internships/${feedbackJob.id}/feedback`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
