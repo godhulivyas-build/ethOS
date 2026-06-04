@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+sqlalchemy
+python-dotenv
+pinecone-client==3.2.2
+langchain
+openai
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+beautifulsoup4
+httpx
+langchain-openai
+langchain-community
