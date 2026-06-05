@@ -7,7 +7,10 @@ from app.db.models import Base
 from app.db.session import engine
 
 # Auto-create tables for SQLite/Postgres compatibility
-Base.metadata.create_all(bind=engine)
+try:
+    Base.metadata.create_all(bind=engine)
+except Exception as e:
+    print(f"Skipping database schema creation/update: {e}")
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
