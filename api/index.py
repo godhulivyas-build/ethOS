@@ -2,6 +2,9 @@ import os
 import sys
 import traceback
 
+# Unconditionally define app at the top level for Vercel's static analysis
+app = None
+
 # Get absolute path to the backend directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BACKEND_DIR = os.path.join(BASE_DIR, 'backend')

@@ -2,6 +2,9 @@ import os
 import sys
 import traceback
 
+# Unconditionally define app at the top level for Vercel's static analysis
+app = None
+
 # Ensure backend directory is at the front of the python path to prevent naming collisions
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(CURRENT_DIR), 'backend'))
