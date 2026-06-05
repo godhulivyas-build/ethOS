@@ -79,10 +79,26 @@ def run_aggregator():
         job['score'] = score
         scored_candidates.append(job)
         
-    # 4. Sort and select top 15
+    # 4. Sort and select top 15 active jobs
     scored_candidates.sort(key=lambda x: x['score'], reverse=True)
-    selected_jobs = scored_candidates[:15]
-    print(f"[6/6] Selected top {len(selected_jobs)} listings for database inclusion.")
+    
+    selected_jobs = []
+    print("[6/6] Selecting top active listings for database inclusion...")
+    from verification import verify_link
+    
+    for job in scored_candidates:
+        if len(selected_jobs) >= 15:
+            break
+            
+        print(f"      Verifying: {job['role']} at {job['company']} ({job['apply_link']})...")
+        is_active, reason = verify_link(job['apply_link'])
+        if is_active:
+            selected_jobs.append(job)
+            print("      -> Active! Added.")
+        else:
+            print(f"      -> CLOSED/INVALID ({reason}). Skipping.")
+            
+    print(f"      Selected top {len(selected_jobs)} active listings.")
     
     # 5. Connect to database and insert top listings, fetching deadlines on-demand
     conn = get_db_connection()
@@ -110,6 +126,47 @@ def run_aggregator():
     conn.close()
     print("=" * 60)
     print(f"Aggregator run complete. Successfully inserted {inserted_count} new listings.")
+    print("=" * 60)
+    
+    # Run a verify run of the live database
+    verify_live_database()
+
+def verify_live_database():
+    """
+    Checks all currently active internships in the database.
+    If their application links are closed, marks them as inactive (is_active = 0).
+    """
+    print("=" * 60)
+    print("Verifying Live Database Internships")
+    print("=" * 60)
+    
+    from verification import verify_link
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    # Fetch all active internships
+    cursor.execute("SELECT id, company, role, apply_link FROM internships WHERE is_active = 1")
+    active_jobs = cursor.fetchall()
+    print(f"Found {len(active_jobs)} active internships in database to verify.")
+    
+    deactivated_count = 0
+    for job in active_jobs:
+        job_id, company, role, apply_link = job
+        print(f"  Verifying live listing: {role} @ {company}...")
+        is_active, reason = verify_link(apply_link)
+        if not is_active:
+            print(f"  -> CLOSED ({reason}). Deactivating in database.")
+            cursor.execute("UPDATE internships SET is_active = 0 WHERE id = ?", (job_id,))
+            deactivated_count += 1
+        else:
+            print("  -> Active.")
+            
+    if deactivated_count > 0:
+        conn.commit()
+        print(f"Deactivated {deactivated_count} closed internships.")
+    else:
+        print("All live internships are still active.")
+    conn.close()
     print("=" * 60)
 
 if __name__ == '__main__':
