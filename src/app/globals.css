@@ -4,27 +4,27 @@
 
 @layer base {
   :root {
-    --bg: #fcf9f8;
+    --bg: #f2f7f6;
     --surface: #ffffff;
-    --surface-2: #f6f3f2;
-    --border: #e5e2e1;
-    --border-hover: #bfc9c5;
-    --text: #1A1A1A;
-    --text-secondary: #3f4946;
-    --text-muted: #6f7976;
-    --accent: #034F46;
-    --accent-hover: #003630;
-    --accent-glow: rgba(3, 79, 70, 0.06);
-    --success: #034F46;
-    --warning: #ffb59d;
-    --error: #ba1a1a;
-    --purple: #6b48b8;
-    --gradient: linear-gradient(135deg, #034F46, #6b48b8, #AD8BFF);
+    --surface-2: #ecf4f3;
+    --border: #e2e8f0;
+    --border-hover: #cbd5e1;
+    --text: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --accent: #10b981;
+    --accent-hover: #059669;
+    --accent-glow: rgba(16, 185, 129, 0.08);
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --purple: #06b6d4;
+    --gradient: linear-gradient(135deg, #0f766e, #10b981, #6ee7b7);
     --radius: 12px;
     --radius-sm: 8px;
     --radius-lg: 16px;
-    --shadow: 0 4px 12px rgba(26, 26, 26, 0.04);
-    --shadow-lg: 0 12px 48px rgba(26, 26, 26, 0.08);
+    --shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+    --shadow-lg: 0 12px 48px rgba(15, 23, 42, 0.06);
   }
 
   body {

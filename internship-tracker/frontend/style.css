@@ -5,50 +5,50 @@
     --font-body: 'Plus Jakarta Sans', sans-serif;
     
     /* Default Dark Theme Variables (Forest Obsidian) */
-    --bg-primary: #0A0D0B;
-    --bg-secondary: #121814;
-    --text-primary: #ECF2EE;
-    --text-secondary: #8E9993;
-    --accent-green: #42A873;
-    --accent-sage: #66C292;
-    --accent-light-green: rgba(66, 168, 115, 0.1);
+    --bg-primary: #060d0c;
+    --bg-secondary: #0b1413;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-green: #10b981;
+    --accent-sage: #34d399;
+    --accent-light-green: rgba(16, 185, 129, 0.1);
     
-    --card-bg: #101512;
-    --card-border: #212B24;
+    --card-bg: #0b1413;
+    --card-border: #1e293b;
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     --card-hover-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
     
-    --glass-bg: rgba(16, 21, 18, 0.75);
+    --glass-bg: rgba(11, 20, 19, 0.75);
     --glass-border: rgba(255, 255, 255, 0.05);
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
     
     --input-bg: rgba(0, 0, 0, 0.3);
-    --whatsapp-bg: rgba(66, 168, 115, 0.08);
-    --whatsapp-border: rgba(66, 168, 115, 0.2);
+    --whatsapp-bg: rgba(16, 185, 129, 0.08);
+    --whatsapp-border: rgba(16, 185, 129, 0.2);
 }
 
-/* Light Theme overrides (Warm Beige & Sage Green) */
+/* Light Theme overrides (Teal & Mint Sage) */
 body.light-theme {
-    --bg-primary: #FAF8F5;
-    --bg-secondary: #F2EDE4;
-    --text-primary: #252D29;
-    --text-secondary: #65736C;
-    --accent-green: #245037;
-    --accent-sage: #4B7C62;
-    --accent-light-green: #E5EDE9;
+    --bg-primary: #f2f7f6;
+    --bg-secondary: #ecf4f3;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-green: #0f766e;
+    --accent-sage: #10b981;
+    --accent-light-green: #d1fae5;
     
-    --card-bg: #FFFFFF;
-    --card-border: #E4DFD5;
-    --card-shadow: 0 6px 16px rgba(37, 45, 41, 0.04);
-    --card-hover-shadow: 0 14px 32px rgba(37, 45, 41, 0.1);
+    --card-bg: #ffffff;
+    --card-border: #cbd5e1;
+    --card-shadow: 0 6px 16px rgba(15, 23, 42, 0.03);
+    --card-hover-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
     
     --glass-bg: rgba(255, 255, 255, 0.8);
     --glass-border: rgba(0, 0, 0, 0.06);
-    --glass-shadow: 0 8px 32px 0 rgba(37, 45, 41, 0.04);
+    --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.03);
     
-    --input-bg: #FFFFFF;
-    --whatsapp-bg: #E8F2EC;
-    --whatsapp-border: #BCD9C8;
+    --input-bg: #ffffff;
+    --whatsapp-bg: #e6f4f1;
+    --whatsapp-border: #a7f3d0;
 }
 
 * {

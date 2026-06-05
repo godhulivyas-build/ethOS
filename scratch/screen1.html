@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ETHOS Internships - Listings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-background": "#1c1b1b",
+                        "outline": "#6f7976",
+                        "on-tertiary-fixed-variant": "#6c3928",
+                        "surface-cream": "#FFFFEB",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#6b48b8",
+                        "on-secondary-container": "#40168c",
+                        "on-primary-fixed-variant": "#055047",
+                        "outline-variant": "#bfc9c5",
+                        "on-secondary-fixed-variant": "#522e9f",
+                        "surface-container-highest": "#e5e2e1",
+                        "ink-charcoal": "#1A1A1A",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-error-container": "#93000a",
+                        "surface": "#fcf9f8",
+                        "primary": "#003630",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-container": "#ac8afe",
+                        "on-tertiary-fixed": "#360f03",
+                        "inverse-on-surface": "#f3f0ef",
+                        "primary-container": "#034f46",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "on-surface-variant": "#3f4946",
+                        "inverse-primary": "#94d2c6",
+                        "deep-forest": "#034F46",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#94d2c6",
+                        "surface-tint": "#29685f",
+                        "surface-container": "#f0eded",
+                        "error": "#ba1a1a",
+                        "muted-sage": "#E8EDE0",
+                        "background": "#fcf9f8",
+                        "on-surface": "#1c1b1b",
+                        "on-tertiary-container": "#eaa38c",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00201c",
+                        "on-secondary-fixed": "#23005c",
+                        "surface-variant": "#e5e2e1",
+                        "ethereal-purple": "#AD8BFF",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fcf9f8",
+                        "tertiary-container": "#6b3827",
+                        "tertiary": "#502213",
+                        "primary-fixed": "#afefe2",
+                        "on-primary-container": "#81bfb3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-sm": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fcf9f8; /* Light airy background */
+            color: #1A1A1A;
+        }
+        .ethos-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e2e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+        .ethos-card:hover {
+            border-color: #afefe2;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+        }
+        .ethos-button-primary {
+            background-color: #10b981; /* bright emerald green */
+            color: #ffffff;
+        }
+        .ethos-button-primary:hover {
+            background-color: #059669;
+        }
+        .ethos-button-secondary {
+            background-color: transparent;
+            border: 1px solid #bfc9c5;
+            color: #3f4946;
+        }
+        .ethos-button-secondary:hover {
+            background-color: #f6f3f2;
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased min-h-screen flex flex-col relative">
+<!-- TopNavBar Component -->
+<nav class="bg-surface/80 backdrop-blur-md fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto border-b border-surface-variant">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-deep-forest" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<span class="font-headline-md text-headline-md font-bold text-ink-charcoal tracking-tight">ethOS</span>
+<span class="font-headline-md text-headline-md text-deep-forest font-bold ml-1">Internships</span>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase mt-[-4px]">Daily Smart Aggregator</p>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-ink-charcoal font-bold border-b-2 border-deep-forest pb-1" href="#">Browse Listings</a>
+<a class="text-on-surface-variant hover:text-ink-charcoal transition-colors duration-300 pb-1" href="#">Features</a>
+<a class="text-on-surface-variant hover:text-ink-charcoal transition-colors duration-300 pb-1" href="#">Scoring</a>
+<a class="text-on-surface-variant hover:text-ink-charcoal transition-colors duration-300 pb-1" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full hover:bg-surface-variant flex items-center justify-center text-on-surface-variant hover:text-ink-charcoal transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">light_mode</span>
+</button>
+<button class="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-on-surface-variant hover:bg-surface-variant transition-colors border border-outline-variant">
+<span class="material-symbols-outlined" style="font-size: 16px;">chat_bubble</span>
+                Share Feedback
+            </button>
+<div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-fixed/30 text-deep-forest text-xs border border-primary-fixed/50">
+<span class="material-symbols-outlined" style="font-size: 14px;">sync</span>
+                15 Daily Listings Updated
+            </div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Promo Banner -->
+<div class="ethos-card rounded-xl p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden bg-muted-sage/20 border-primary-fixed/30">
+<div class="flex items-start gap-4 relative z-10">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/50 flex items-center justify-center border border-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-deep-forest" style="font-variation-settings: 'FILL' 1; font-size: 24px;">forum</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-ink-charcoal mb-2">Get a Premium Resume Template &amp; Job Search Help</h2>
+<p class="text-on-surface-variant text-sm md:text-base max-w-3xl">Chat directly with the founder on WhatsApp to request a high-converting resume template and get personalized guidance on landing your target roles.</p>
+</div>
+</div>
+<button class="ethos-button-primary px-6 py-3 rounded-lg font-medium flex items-center gap-2 whitespace-nowrap relative z-10 shrink-0 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
+                Get Resume &amp; Job Help
+            </button>
+</div>
+<!-- Quote / Search / Stats Section -->
+<div class="space-y-4 mb-12">
+<!-- Quote -->
+<div class="ethos-card rounded-xl p-4 flex items-center justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-deep-forest"></div>
+<div class="flex items-center gap-4 pl-4">
+<span class="material-symbols-outlined text-deep-forest opacity-50" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="text-on-surface-variant italic text-sm md:text-base">"Build your own dreams, or someone else will hire you to build theirs." <span class="text-outline not-italic ml-2">— Farrah Gray</span></p>
+</div>
+<button class="w-8 h-8 rounded-full hover:bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">autorenew</span>
+</button>
+</div>
+<!-- Filters -->
+<div class="ethos-card rounded-xl p-4 flex flex-col lg:flex-row gap-4 items-center">
+<div class="relative w-full lg:flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-3 pl-12 pr-4 text-ink-charcoal placeholder-outline focus:outline-none focus:border-deep-forest focus:ring-1 focus:ring-deep-forest transition-all" placeholder="Search by skills, roles, or company..." type="text"/>
+</div>
+<div class="flex w-full lg:w-auto gap-4">
+<div class="flex-1 lg:w-40">
+<label class="text-[10px] text-outline uppercase font-bold tracking-wider mb-1 block flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 12px;">work</span> WORK MODE
+                        </label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg py-2.5 px-3 text-sm text-ink-charcoal appearance-none focus:outline-none focus:border-deep-forest">
+<option>All Modes</option>
+<option>Remote</option>
+<option>On-site</option>
+</select>
+</div>
+<div class="flex-1 lg:w-40">
+<label class="text-[10px] text-outline uppercase font-bold tracking-wider mb-1 block flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 12px;">payments</span> STIPEND
+                        </label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg py-2.5 px-3 text-sm text-ink-charcoal appearance-none focus:outline-none focus:border-deep-forest">
+<option>All Stipends</option>
+<option>Paid Only</option>
+</select>
+</div>
+<div class="flex-1 lg:w-40">
+<label class="text-[10px] text-outline uppercase font-bold tracking-wider mb-1 block flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 12px;">sort</span> SORT BY
+                        </label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg py-2.5 px-3 text-sm text-ink-charcoal appearance-none focus:outline-none focus:border-deep-forest">
+<option>Latest Scraped</option>
+<option>Highest Stipend</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="ethos-card rounded-xl p-6">
+<div class="text-3xl font-bold text-ink-charcoal mb-1">40</div>
+<div class="text-xs text-on-surface-variant">Available Internships</div>
+</div>
+<div class="ethos-card rounded-xl p-6">
+<div class="text-3xl font-bold text-ink-charcoal mb-1">12</div>
+<div class="text-xs text-on-surface-variant">Remote Options</div>
+</div>
+<div class="ethos-card rounded-xl p-6">
+<div class="text-3xl font-bold text-ink-charcoal mb-1">39</div>
+<div class="text-xs text-on-surface-variant">Paid Listings</div>
+</div>
+<div class="ethos-card rounded-xl p-6 relative overflow-hidden border-primary-fixed/50 bg-primary-fixed/10">
+<div class="text-3xl font-bold text-ink-charcoal mb-1 relative z-10">3</div>
+<div class="text-xs text-on-surface-variant relative z-10">Clicks Tracked</div>
+</div>
+</div>
+</div>
+<!-- Listings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="ethos-card rounded-2xl p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded border border-outline-variant text-[10px] text-on-surface-variant uppercase tracking-wider font-code-sm bg-surface-container-low">LINKEDIN</span>
+</div>
+<span class="text-xs font-medium text-tertiary-container bg-tertiary-fixed px-2 py-1 rounded border border-tertiary-fixed-dim">Unspecified</span>
+</div>
+<h3 class="text-xl font-bold text-ink-charcoal mb-1 leading-tight">Product Intern</h3>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">business</span>
+<span>Rupeek</span>
+</div>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">location_on</span>
+<span>Bangalore</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">hourglass_empty</span>
+<span>Duration: 6 Months</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Product Management</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Problem Solving</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">User Experience</span>
+</div>
+<div class="mt-auto space-y-3">
+<button class="w-full ethos-button-secondary py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">group</span>
+                        Find HR / Get Referral
+                    </button>
+<div class="flex items-center justify-between pt-2 border-t border-surface-variant">
+<div>
+<div class="text-[10px] text-outline uppercase">APPLY BY</div>
+<div class="text-sm text-ink-charcoal font-medium">30 Jun 2026</div>
+</div>
+<button class="ethos-button-primary px-6 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors">
+                            Apply <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="ethos-card rounded-2xl p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded border border-outline-variant text-[10px] text-on-surface-variant uppercase tracking-wider font-code-sm bg-surface-container-low">LINKEDIN</span>
+</div>
+<span class="text-xs font-medium text-primary-container bg-primary-fixed px-2 py-1 rounded border border-primary-fixed-dim">₹25,000 /mo</span>
+</div>
+<h3 class="text-xl font-bold text-ink-charcoal mb-1 leading-tight">Software Development Engineer - II, ABI Engineering</h3>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">business</span>
+<span>Amazon</span>
+</div>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">location_on</span>
+<span>Bengaluru, Karnataka, India</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">hourglass_empty</span>
+<span>Duration: 3 Months</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Data Analysis</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Docker</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Machine Learning</span>
+</div>
+<div class="mt-auto space-y-3">
+<button class="w-full ethos-button-secondary py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">group</span>
+                        Find HR / Get Referral
+                    </button>
+<div class="flex items-center justify-between pt-2 border-t border-surface-variant border-dashed">
+<div>
+<div class="text-[10px] text-outline uppercase">APPLY BY</div>
+<div class="text-sm text-ink-charcoal font-medium">21 Jun 2026</div>
+</div>
+<button class="ethos-button-primary px-6 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors">
+                            Apply <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="ethos-card rounded-2xl p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded border border-outline-variant text-[10px] text-on-surface-variant uppercase tracking-wider font-code-sm bg-surface-container-low">LINKEDIN</span>
+</div>
+<span class="text-xs font-medium text-primary-container bg-primary-fixed px-2 py-1 rounded border border-primary-fixed-dim">₹45,000 /mo</span>
+</div>
+<h3 class="text-xl font-bold text-ink-charcoal mb-1 leading-tight">Software Development Engineer - II</h3>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">business</span>
+<span>Amazon</span>
+</div>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">location_on</span>
+<span>Bengaluru, Karnataka, India</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">hourglass_empty</span>
+<span>Duration: 6 Months</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">React</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Communication</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Python</span>
+</div>
+<div class="mt-auto space-y-3">
+<button class="w-full ethos-button-secondary py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">group</span>
+                        Find HR / Get Referral
+                    </button>
+<div class="flex items-center justify-between pt-2 border-t border-surface-variant border-dashed">
+<div>
+<div class="text-[10px] text-outline uppercase">APPLY BY</div>
+<div class="text-sm text-ink-charcoal font-medium">23 Jun 2026</div>
+</div>
+<button class="ethos-button-primary px-6 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors">
+                            Apply <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="ethos-card rounded-2xl p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded border border-outline-variant text-[10px] text-on-surface-variant uppercase tracking-wider font-code-sm bg-surface-container-low">LINKEDIN</span>
+</div>
+<span class="text-xs font-medium text-primary-container bg-primary-fixed px-2 py-1 rounded border border-primary-fixed-dim">₹25,000 /mo</span>
+</div>
+<h3 class="text-xl font-bold text-ink-charcoal mb-1 leading-tight">Full Stack Development Intern</h3>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">business</span>
+<span>Fireblaze AI School</span>
+</div>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">location_on</span>
+<span>Nagpur, Maharashtra, India</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">hourglass_empty</span>
+<span>Duration: 3 Months</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">SQL</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Communication</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Data Analysis</span>
+</div>
+<div class="mt-auto space-y-3">
+<button class="w-full ethos-button-secondary py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">group</span>
+                        Find HR / Get Referral
+                    </button>
+<div class="flex items-center justify-between pt-2 border-t border-surface-variant border-dashed">
+<div>
+<div class="text-[10px] text-outline uppercase">APPLY BY</div>
+<div class="text-sm text-ink-charcoal font-medium">15 Jul 2026</div>
+</div>
+<button class="ethos-button-primary px-6 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors">
+                            Apply <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="ethos-card rounded-2xl p-6 flex flex-col h-full">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded border border-outline-variant text-[10px] text-on-surface-variant uppercase tracking-wider font-code-sm bg-surface-container-low">LINKEDIN</span>
+</div>
+<span class="text-xs font-medium text-primary-container bg-primary-fixed px-2 py-1 rounded border border-primary-fixed-dim">₹45,000 /mo</span>
+</div>
+<h3 class="text-xl font-bold text-ink-charcoal mb-1 leading-tight">Software Engineer</h3>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">business</span>
+<span>Nexthink</span>
+</div>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">location_on</span>
+<span>Bengaluru, Karnataka, India</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-deep-forest" style="font-size: 16px;">hourglass_empty</span>
+<span>Duration: 3 Months</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">SQL</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Docker</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs text-on-surface-variant font-code-sm border border-outline-variant/30">Machine Learning</span>
+</div>
+<div class="mt-auto space-y-3">
+<button class="w-full ethos-button-secondary py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">group</span>
+                        Find HR / Get Referral
+                    </button>
+<div class="flex items-center justify-between pt-2 border-t border-surface-variant border-dashed">
+<div>
+<div class="text-[10px] text-outline uppercase">APPLY BY</div>
+<div class="text-sm text-ink-charcoal font-medium">10 Aug 2026</div>
+</div>
+<button class="ethos-button-primary px-6 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors">
+                            Apply <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="ethos-button-primary px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
+            Get Resume &amp; Job Help
+        </button>
+</div>
+<!-- Footer Component -->
+<footer class="w-full px-margin-desktop py-12 max-w-container-max mx-auto flex flex-col md:flex-row justify-between border-t border-surface-variant mt-12 bg-surface">
+<div class="mb-8 md:mb-0">
+<div class="flex items-center gap-2 mb-4">
+<div class="w-6 h-6 bg-primary-fixed rounded-md flex items-center justify-center">
+<span class="material-symbols-outlined text-deep-forest text-[14px]" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-ink-charcoal text-lg">ethOS</span>
+</div>
+<p class="text-sm text-on-surface-variant">© 2024 ETHOS Identity OS. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4">
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">Product</a>
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">Features</a>
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">Pricing</a>
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">Company</a>
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">About</a>
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">Careers</a>
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">Legal</a>
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">Privacy</a>
+<a class="text-sm text-on-surface-variant hover:text-ink-charcoal transition-colors duration-200" href="#">Terms</a>
+</div>
+</footer>
+</body></html>

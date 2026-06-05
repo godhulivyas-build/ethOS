@@ -40,7 +40,7 @@ def get_internships(
     if jobs_count == 0:
         run_ingestion_pipeline(db)
         
-    query = db.query(InternshipJob)
+    query = db.query(InternshipJob).filter(InternshipJob.is_active == True)
     
     # 1. Freshness USP Filters
     if posted_within == "24h":
@@ -195,7 +195,7 @@ def get_admin_analytics(db: Session = Depends(get_db)):
     """
     Calculates Admin Dashboard KPI statistics, funnels, applied roles, and user ratings.
     """
-    total_jobs = db.query(InternshipJob).count()
+    total_jobs = db.query(InternshipJob).filter(InternshipJob.is_active == True).count()
     active_users = db.query(func.count(UserJobInteraction.user_id.distinct())).scalar() or 1
     
     views = db.query(UserJobInteraction).filter_by(viewed=True).count()
@@ -251,7 +251,7 @@ def get_daily_digests_digest(db: Session = Depends(get_db)):
     """
     Generates and pulls the 4 Daily Digests for general, product, founders, and AI roles.
     """
-    jobs = db.query(InternshipJob).all()
+    jobs = db.query(InternshipJob).filter(InternshipJob.is_active == True).all()
     if not jobs:
         jobs = run_ingestion_pipeline(db)
     return generate_daily_digests(jobs)

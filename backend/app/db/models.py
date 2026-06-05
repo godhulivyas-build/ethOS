@@ -72,6 +72,7 @@ class InternshipJob(Base):
     ats_keywords = Column(JSON, default=[])
     quality_score = Column(Integer, default=80)
     scoring_breakdown = Column(JSON, default={})
+    is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 class UserJobInteraction(Base):
