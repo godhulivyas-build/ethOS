@@ -1,5 +1,5 @@
 "use client";
-
+// Trigger Vercel redeployment with premium animation updates
 import { useState } from "react";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
