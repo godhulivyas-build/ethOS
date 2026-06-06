@@ -131,6 +131,7 @@ def insert_into_tracker():
         # Check if already exists in database
         cursor.execute("SELECT id FROM internships WHERE job_id = ?", (job_id,))
         if cursor.fetchone():
+            cursor.execute("UPDATE internships SET is_active = 1 WHERE job_id = ?", (job_id,))
             skipped += 1
             continue
             
@@ -138,7 +139,7 @@ def insert_into_tracker():
         deadline = "2026-07-31" # Default deadline
         source_platform = "Direct"
         scraped_at = datetime.now().isoformat()
-        is_active = 0  # Inactive by default ("keep it on db, will post tomorrow")
+        is_active = 1  # Active by default
         
         # Parse work mode based on location
         work_mode = "hybrid" if "Bengaluru" in c["address"] or "Pune" in c["address"] else "in-office"
@@ -183,6 +184,7 @@ def insert_into_ethos():
         # Check if already exists in database
         cursor.execute("SELECT id FROM internship_jobs WHERE company_name=? AND role_name=? AND apply_link=?", (c["name"], role, c["website"]))
         if cursor.fetchone():
+            cursor.execute("UPDATE internship_jobs SET is_active = 1 WHERE company_name=? AND role_name=? AND apply_link=?", (c["name"], role, c["website"]))
             skipped += 1
             continue
             
@@ -197,7 +199,7 @@ def insert_into_ethos():
             f"this is a great opportunity to kickstart your career. Apply directly via their careers portal."
         )
         
-        is_active = 0  # Inactive by default ("keep it on db, will post tomorrow")
+        is_active = 1  # Active by default
         created_at = datetime.utcnow().isoformat()
         
         try:
